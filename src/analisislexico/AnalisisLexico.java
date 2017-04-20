@@ -8,6 +8,8 @@ package analisislexico;
 /**
  *
  * @author NandoLizola
+ * 
+ * 
  */
 public class AnalisisLexico {
 
