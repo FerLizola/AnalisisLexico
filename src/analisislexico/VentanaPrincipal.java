@@ -5,6 +5,8 @@
  */
 package analisislexico;
 
+import java.io.File;
+
 /**
  *
  * @author Bryan
@@ -92,11 +94,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        generarLexer();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaPrincipal().setVisible(true);
             }
         });
+    }
+    public static void generarLexer(){
+        File file= new File("src/analisislexico/lexer.flex");
+        jflex.Main.generate(file);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
