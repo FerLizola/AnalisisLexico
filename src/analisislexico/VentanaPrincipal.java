@@ -7,11 +7,15 @@ package analisislexico;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -99,6 +103,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAbrirMouseClicked(evt);
+            }
+        });
+        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirActionPerformed(evt);
             }
         });
         jMenu1.add(btnAbrir);
@@ -219,6 +228,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAbrirMouseClicked
+
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+     String aux="";  
+        String texto = "";
+       
+      try{
+        JFileChooser fc=new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.txt", "txt");
+          fc.setFileFilter(filtro);
+         fc.showOpenDialog(this);
+          
+         
+         File abre=fc.getSelectedFile();
+         
+        
+         if(abre!=null)
+   {     
+      FileReader archivos=new FileReader(abre);
+      BufferedReader lee=new BufferedReader(archivos);
+      while((aux=lee.readLine())!=null)
+      {
+         texto+= aux+ "\n";
+      }
+         lee.close();
+   }
+    } catch(IOException ex){
+     JOptionPane.showMessageDialog(null,ex+"" +
+           "\nNo se ha encontrado el archivo",
+                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+    // return texto;
+    jtxtCode.setText(texto);
+//El texto se almacena en el JTextArea
+    }
+    }//GEN-LAST:event_btnAbrirActionPerformed
 
     /**
      * @param args the command line arguments
