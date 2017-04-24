@@ -47,7 +47,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btnAbrir = new javax.swing.JMenuItem();
+        btnGuardar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnCopiar = new javax.swing.JMenuItem();
+        btnPegar = new javax.swing.JMenuItem();
+        btnCortar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,10 +92,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
+
+        btnAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        btnAbrir.setText("Abrir");
+        btnAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAbrirMouseClicked(evt);
+            }
+        });
+        jMenu1.add(btnAbrir);
+
+        btnGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        btnGuardar.setText("Guardar");
+        jMenu1.add(btnGuardar);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
+
+        btnCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        btnCopiar.setText("Copiar");
+        jMenu2.add(btnCopiar);
+
+        btnPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        btnPegar.setText("Pegar");
+        jMenu2.add(btnPegar);
+
+        btnCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        btnCortar.setText("Cortar");
+        jMenu2.add(btnCortar);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -184,6 +216,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void btnAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAbrirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +261,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAbrir;
+    private javax.swing.JMenuItem btnCopiar;
+    private javax.swing.JMenuItem btnCortar;
+    private javax.swing.JMenuItem btnGuardar;
+    private javax.swing.JMenuItem btnPegar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
