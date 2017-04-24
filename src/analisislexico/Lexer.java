@@ -624,7 +624,7 @@ public String lexeme;
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { return ERROR;
+            { lexeme=yytext(); return ERROR;
             }
           case 13: break;
           case 2: 
@@ -640,31 +640,31 @@ public String lexeme;
             }
           case 16: break;
           case 5: 
-            { return OPAGR;
+            { lexeme=yytext(); return OPAGR;
             }
           case 17: break;
           case 6: 
-            { return OPASIG;
+            { lexeme=yytext(); return OPASIG;
             }
           case 18: break;
           case 7: 
-            { return OPREL;
+            { lexeme=yytext(); return OPREL;
             }
           case 19: break;
           case 8: 
-            { return OPLOG;
+            { lexeme=yytext(); return OPLOG;
             }
           case 20: break;
           case 9: 
-            { return OPARIT;
+            { lexeme=yytext(); return OPARIT;
             }
           case 21: break;
           case 10: 
-            { return ENDLN;
+            { lexeme=yytext(); return ENDLN;
             }
           case 22: break;
           case 11: 
-            { return PALRES;
+            { lexeme=yytext(); return PALRES;
             }
           case 23: break;
           case 12: 
