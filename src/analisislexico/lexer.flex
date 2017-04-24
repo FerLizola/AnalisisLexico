@@ -1,29 +1,62 @@
-package analisislexico; 
-import static analisislexico.Token1.*;
+package analisislexico;
+import static analisislexico.Token.*;
 %%
 %class Lexer
 %type Token
-%line
-L=[a-zA-Z]
+L=[a-zA-Z_]
 D=[0-9]
-Nentero = [("+"|"-")]?{D}*
-Nfloat = [("+"|"-")]?{D}*|("+"|"-"|""){D}*"."{D}*
-terminadorLinea= ";"
-espacioBlanco = {terminadorLinea} | [ \t\f]
-WHITE=[\t\n\r]
-%{public string lexema;%}
+WHITE=[ \t\r\n]
+%{
+public String lexeme;
+%}
 %%
-{WHITE}{/*Ignore*/}
-"#"[^\n]*{/*Ignore*/}
-\'\'\'[^\'\'\']{/*Ignore*/}
-"="{return ASIGNAR;}
-"=="    |   "<="    |   ">="    |   "<" |   ">" |   "!="    {return RELACIONAR}
-reference|begin|end|use|in|out|write|read|turnOn|turnOff|digital|long|boolean|analogic{return PAL_RES}
-temIdeal|humAmb|valPh|valElect|toReturn|def|if|for|int|small|float{return PAL_RES}
-{L}+({L}|{D})*{lexema=yytext();return ID}
-"+" |   "-" |   "/" |   "*" {return ARITMETICOS}
-"&&"|"||"|"!"{return LOGICOS}
-"("  | ")"  |   "[" |   "]" {return AGRUPACION}
-{Nentero}{lexema=yytex();return INT}
-
-";"{return ENDL;}
+{WHITE} {/* ignore */}
+"#".* {/* ignore */}
+[\'\'\'][^(\'\'\')][\'\'\'] {/*Ignore*/}
+"=" {return OPASIG;}
+"==" {return OPREL;}
+"<" {return OPREL;}
+">" {return OPREL;}
+"<=" {return OPREL;}
+">=" {return OPREL;}
+"!=" {return OPREL;}
+"+" {return OPARIT;}
+"*" {return OPARIT;}
+"-" {return OPARIT;}
+"/" {return OPARIT;}
+"&&" {return OPLOG;}
+"||" {return OPLOG;}
+"!" {return OPLOG;}
+"(" {return OPAGR;}
+")" {return OPAGR;}
+"[" {return OPAGR;}
+"]" {return OPAGR;}
+"reference" {return PALRES;}
+"begin" {return PALRES;}
+"end" {return PALRES;}
+"use" {return PALRES;}
+"in" {return PALRES;}
+"out" {return PALRES;}
+"write" {return PALRES;}
+"read" {return PALRES;}
+"turnOn" {return PALRES;}
+"turnOff" {return PALRES;}
+"digital" {return PALRES;}
+"long" {return PALRES;}
+"boolean" {return PALRES;}
+"temIdeal" {return PALRES;}
+"humAmb" {return PALRES;}
+"valPh" {return PALRES;}
+"valElect" {return PALRES;}
+"toReturn" {return PALRES;}
+"def" {return PALRES;}
+"if" {return PALRES;}
+"for" {return PALRES;}
+"int" {return PALRES;}
+"small" {return PALRES;}
+"float" {return PALRES;}
+"analogic" {return PALRES;}
+{L}({L}|{D})* {lexeme=yytext(); return ID;}
+[-+]?{D}+ {lexeme=yytext();return INT;}
+";" {return ENDLN;}
+. {return ERROR;}
