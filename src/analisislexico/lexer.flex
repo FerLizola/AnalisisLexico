@@ -9,6 +9,11 @@ D=[0-9]
 WHITE=[ \t\r\n]
 %{
 public String lexeme;
+private TablaSimbolos tabla;
+public Yylex(Reader in,TablaSimbolos t){
+    this(in);
+    this.tabla=t;
+    }
 public int linea;
 %}
 %%
@@ -60,7 +65,10 @@ public int linea;
 "small" {lexeme=yytext(); linea=yyline; return PALRES;}
 "float" {lexeme=yytext(); linea=yyline; return PALRES;}
 "analogic" {lexeme=yytext(); linea=yyline; return PALRES;}
-{L}({L}|{D})* {lexeme=yytext(); linea=yyline; return ID;}
+{L}({L}|{D})* {lexeme=yytext(); linea=yyline; 
+                Simbolo s;
+                if((s=tabla.buscar(lexeme))==null)
+                    s=tabla.insertar(lexeme);return ID;}
 [-+]?{D}+ {lexeme=yytext(); linea=yyline; return INT;}
 ";" {lexeme=yytext(); linea=yyline; return ENDLN;}
 . {lexeme=yytext(); linea=yyline; return ERROR;}

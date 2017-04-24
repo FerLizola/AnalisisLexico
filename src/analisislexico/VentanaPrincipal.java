@@ -5,6 +5,7 @@
  */
 package analisislexico;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -185,20 +186,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         StringReader cad= new StringReader(jtxtCode.getText());
         Reader red= new BufferedReader(cad);
-        Lexer lex = new Lexer(red);
+        TablaSimbolos t=new TablaSimbolos();
+        Lexer lex = new Lexer(red,t);
         jtxtTokens.setText("");
-        while(true){
-            Token token = null;
+        Token token=null;
+        do{
             try {
                 token = lex.yylex();
             } catch (IOException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(token==null){
+            if(token!=null){
                // jtxtTokens.setText(jtxtTokens.getText()+"EOF"+"\n");
                 //System.out.println("EOF");
-                return;
-            }
+               
+            
             switch(token){
       case ID:case INT:case OPARIT:case OPLOG:case OPREL:case FLOAT:case PALRES: case OPASIG: case OPAGR: case ENDLN:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
@@ -207,14 +209,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 break;
                 case ERROR:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
-                    jtxtError.setText(jtxtError.getText()+"Error en la cadena"+" "+lex.lexeme+" en la "
-                            + "línea "+(lex.linea+1)+". La cadena no es una cadena valida."+"\n");
+                    jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+" en la "
+                            + "cadena "+(lex.lexeme)+". La cadena no es una cadena valida."+"\n");
                     break;
                 default:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
                     //System.out.println("TOKEN: "+token);
             }
-        }      
+            }
+        }while(token!=null);
+        
+        t.imprimir();
+        if(jtxtError.getText().isEmpty()){
+            jtxtError.setForeground(Color.red);
+            jtxtError.setText(jtxtError.getText());
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
