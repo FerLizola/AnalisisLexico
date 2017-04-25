@@ -307,6 +307,7 @@ class Lexer {
 
   /* user code: */
 public String lexeme;
+public int linea;
 
 
   /**
@@ -557,6 +558,58 @@ public String lexeme;
     while (true) {
       zzMarkedPosL = zzMarkedPos;
 
+      boolean zzR = false;
+      int zzCh;
+      int zzCharCount;
+      for (zzCurrentPosL = zzStartRead  ;
+           zzCurrentPosL < zzMarkedPosL ;
+           zzCurrentPosL += zzCharCount ) {
+        zzCh = Character.codePointAt(zzBufferL, zzCurrentPosL, zzMarkedPosL);
+        zzCharCount = Character.charCount(zzCh);
+        switch (zzCh) {
+        case '\u000B':
+        case '\u000C':
+        case '\u0085':
+        case '\u2028':
+        case '\u2029':
+          yyline++;
+          zzR = false;
+          break;
+        case '\r':
+          yyline++;
+          zzR = true;
+          break;
+        case '\n':
+          if (zzR)
+            zzR = false;
+          else {
+            yyline++;
+          }
+          break;
+        default:
+          zzR = false;
+        }
+      }
+
+      if (zzR) {
+        // peek one character ahead if it is \n (if we have counted one line too much)
+        boolean zzPeek;
+        if (zzMarkedPosL < zzEndReadL)
+          zzPeek = zzBufferL[zzMarkedPosL] == '\n';
+        else if (zzAtEOF)
+          zzPeek = false;
+        else {
+          boolean eof = zzRefill();
+          zzEndReadL = zzEndRead;
+          zzMarkedPosL = zzMarkedPos;
+          zzBufferL = zzBuffer;
+          if (eof) 
+            zzPeek = false;
+          else 
+            zzPeek = zzBufferL[zzMarkedPosL] == '\n';
+        }
+        if (zzPeek) yyline--;
+      }
       zzAction = -1;
 
       zzCurrentPosL = zzCurrentPos = zzStartRead = zzMarkedPosL;
@@ -624,15 +677,15 @@ public String lexeme;
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { lexeme=yytext(); return ERROR;
+            { lexeme=yytext(); linea=yyline; return ERROR;
             }
           case 13: break;
           case 2: 
-            { lexeme=yytext(); return ID;
+            { lexeme=yytext(); linea=yyline; return ID;
             }
           case 14: break;
           case 3: 
-            { lexeme=yytext();return INT;
+            { lexeme=yytext(); linea=yyline; return INT;
             }
           case 15: break;
           case 4: 
@@ -640,31 +693,31 @@ public String lexeme;
             }
           case 16: break;
           case 5: 
-            { lexeme=yytext(); return OPAGR;
+            { lexeme=yytext(); linea=yyline; return OPAGR;
             }
           case 17: break;
           case 6: 
-            { lexeme=yytext(); return OPASIG;
+            { lexeme=yytext();linea=yyline; return OPASIG;
             }
           case 18: break;
           case 7: 
-            { lexeme=yytext(); return OPREL;
+            { lexeme=yytext(); linea=yyline; return OPREL;
             }
           case 19: break;
           case 8: 
-            { lexeme=yytext(); return OPLOG;
+            { lexeme=yytext(); linea=yyline; return OPLOG;
             }
           case 20: break;
           case 9: 
-            { lexeme=yytext(); return OPARIT;
+            { lexeme=yytext(); linea=yyline; return OPARIT;
             }
           case 21: break;
           case 10: 
-            { lexeme=yytext(); return ENDLN;
+            { lexeme=yytext(); linea=yyline; return ENDLN;
             }
           case 22: break;
           case 11: 
-            { lexeme=yytext(); return PALRES;
+            { lexeme=yytext(); linea=yyline; return PALRES;
             }
           case 23: break;
           case 12: 

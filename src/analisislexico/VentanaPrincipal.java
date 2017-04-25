@@ -40,6 +40,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtxtTokens = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtxtError = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -61,6 +64,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jtxtTokens.setRows(5);
         jScrollPane2.setViewportView(jtxtTokens);
 
+        jtxtError.setColumns(20);
+        jtxtError.setRows(5);
+        jScrollPane3.setViewportView(jtxtError);
+
+        jLabel1.setText("Salida:");
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -74,14 +83,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel1)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +108,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -101,6 +122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         StringReader cad= new StringReader(jtxtCode.getText());
         Reader red= new BufferedReader(cad);
         Lexer lex = new Lexer(red);
+        jtxtTokens.setText("");
         while(true){
             Token token = null;
             try {
@@ -114,10 +136,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 return;
             }
             switch(token){
-                case ID: case INT:
+      case ID:case INT:case OPARIT:case OPLOG:case OPREL:case FLOAT:case PALRES: case OPASIG: case OPAGR: case ENDLN:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
+                    
                     //System.out.println("TOKEN: "+token+" "+lexer.lexeme);
                 break;
+                case ERROR:
+                    jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
+                    jtxtError.setText(jtxtError.getText()+"Error en la cadena"+" "+lex.lexeme+" en la "
+                            + "línea "+(lex.linea+1)+". La cadena no es una cadena valida."+"\n");
+                    break;
                 default:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
                     //System.out.println("TOKEN: "+token);
@@ -167,12 +195,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jtxtCode;
+    private javax.swing.JTextArea jtxtError;
     private javax.swing.JTextArea jtxtTokens;
     // End of variables declaration//GEN-END:variables
 }
