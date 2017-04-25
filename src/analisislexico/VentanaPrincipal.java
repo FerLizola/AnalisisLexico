@@ -6,9 +6,15 @@
 package analisislexico;
 
 import java.awt.Color;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -99,6 +105,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -237,41 +248,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-    public String abrirArchivo(){
-         String aux="";  
+    public void abrirArchivo() throws FileNotFoundException, IOException{
+        String aux="";  
         String texto = "";
-       
-      try{
-        JFileChooser fc=new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.txt", "txt");
-          fc.setFileFilter(filtro);
-         fc.showOpenDialog(this);
-          
-         
-         File abre=fc.getSelectedFile();
-         
+        FileInputStream archivo = null;
+        jtxtCode.setText("");
         
-         if(abre!=null)
-   {     
-      FileReader archivos=new FileReader(abre);
-      BufferedReader lee=new BufferedReader(archivos);
-      while((aux=lee.readLine())!=null)
-      
-      {
-         texto+= aux+ "\n";
+        JFileChooser fc=new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.hp", "hp");
+        fc.setFileFilter(filtro);
+        fc.showOpenDialog(fc);       
+      try{
+        aux = fc.getSelectedFile().getAbsolutePath();
+        File abre = fc.getSelectedFile();
+         
+        archivo = new FileInputStream(aux); 
+        DataInputStream dis = new DataInputStream(archivo);
+        
+       
+        BufferedReader in = new BufferedReader(new FileReader(abre));
+        String line = in.readLine();
+        while(line != null){
+          jtxtCode.append(line + "\n");
+          line = in.readLine();
+        }
+         
+
+      }catch(Exception ex){
+          System.out.println("Error");
       }
-         lee.close();
-   }
-    } catch(IOException ex){
-     JOptionPane.showMessageDialog(null,ex+"" +
-           "\nNo se ha encontrado el archivo",
-                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-    // return texto;
-    jtxtCode.setText(texto);
-//El texto se almacena en el JTextArea
+      finally{
+          archivo.close();
+      }
+
     }
-      return texto;
+    
+    
+    public void guardarArchivo() throws IOException{
+        
+      final JFileChooser SaveAs = new JFileChooser();
+      SaveAs.setApproveButtonText("Save");
+      int actionDialog = SaveAs.showOpenDialog(this);
+      if (actionDialog != JFileChooser.APPROVE_OPTION) {
+         return;
+      }
+
+      File fileName = new File(SaveAs.getSelectedFile() + ".hp");
+      BufferedWriter outFile = null;
+      outFile = new BufferedWriter(new FileWriter(fileName));
+      jtxtCode.write(outFile);   // *** here: ***
+      if (outFile != null) {
+          try {
+              outFile.close();
+          } catch (IOException e) {
+              // one of the few times that I think that it's OK
+              // to leave this blank
+          }
+      }
     }
+    
     
     private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
         // TODO add your handling code here:
@@ -286,12 +321,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbrirMouseClicked
 
     private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
-    abrirArchivo();
+        try {
+            abrirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAbrirActionPerformed
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        abrirArchivo();
+        try {
+            abrirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnOpenActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            guardarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
