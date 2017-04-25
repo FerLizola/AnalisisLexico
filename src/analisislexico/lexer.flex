@@ -30,6 +30,8 @@ public int linea;
 "||" {lexeme=yytext(); linea=yyline; return OPLOG;}
 "!" {lexeme=yytext(); linea=yyline; return OPLOG;}
 "(" {lexeme=yytext(); linea=yyline; return OPAGR;}
+"{" {lexeme=yytext(); linea=yyline; return OPAGR;}
+"}" {lexeme=yytext(); linea=yyline; return OPAGR;}
 ")" {lexeme=yytext(); linea=yyline; return OPAGR;}
 "[" {lexeme=yytext(); linea=yyline; return OPAGR;}
 "]" {lexeme=yytext(); linea=yyline; return OPAGR;}

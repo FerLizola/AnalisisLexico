@@ -39,8 +39,8 @@ class Lexer {
     "\3\1\1\50\3\1\1\43\5\1\1\40\1\47\1\1\1\51\10\1"+
     "\1\20\1\0\1\20\1\0\1\1\1\0\1\37\1\26\1\25\1\31"+
     "\1\22\1\23\1\27\1\44\1\30\2\1\1\41\1\42\1\24\1\34"+
-    "\2\1\1\21\1\33\1\35\1\32\1\46\1\36\3\1\1\0\1\17"+
-    "\10\0\1\6\u1fa2\0\1\6\1\6\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\2\1\1\21\1\33\1\35\1\32\1\46\1\36\3\1\1\20\1\17"+
+    "\1\20\7\0\1\6\u1fa2\0\1\6\1\6\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -330,7 +330,7 @@ public int linea;
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 184) {
+    while (i < 186) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
