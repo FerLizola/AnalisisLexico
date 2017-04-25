@@ -180,6 +180,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TablaSimbolos t=new TablaSimbolos();
         Lexer lex = new Lexer(red,t);
         jtxtTokens.setText("");
+        jtxtError.setText("");
+        jtxtError.setForeground(Color.red);
         Token token=null;
         do{
             try {
@@ -201,7 +203,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 case ERROR:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
                     jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+" en la "
-                            + "cadena "+(lex.lexeme)+". La cadena no es una cadena valida."+"\n");
+                            + "cadena "+(lex.lexeme)+". La cadena no es válida para el lenguaje."+"\n");
                     break;
                 default:
                     jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
@@ -211,9 +213,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }while(token!=null);
         
         t.imprimir();
-        if(jtxtError.getText().isEmpty()){
+        if(!jtxtError.getText().isEmpty()){
             jtxtError.setForeground(Color.red);
             jtxtError.setText(jtxtError.getText());
+        }
+        else{
+            jtxtError.setForeground(Color.blue);
+            jtxtError.setText("Compilación correcta!");
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
