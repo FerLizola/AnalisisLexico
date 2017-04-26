@@ -252,33 +252,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String aux="";  
         String texto = "";
         FileInputStream archivo = null;
-        jtxtCode.setText("");
         
         JFileChooser fc=new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.hp", "hp");
         fc.setFileFilter(filtro);
         fc.showOpenDialog(fc);       
       try{
+        
         aux = fc.getSelectedFile().getAbsolutePath();
         File abre = fc.getSelectedFile();
          
         archivo = new FileInputStream(aux); 
         DataInputStream dis = new DataInputStream(archivo);
         
-       
+        jtxtCode.setText("");
         BufferedReader in = new BufferedReader(new FileReader(abre));
         String line = in.readLine();
         while(line != null){
           jtxtCode.append(line + "\n");
           line = in.readLine();
         }
-         
-
       }catch(Exception ex){
-          System.out.println("Error");
+          //System.out.println("Cancelado");
       }
       finally{
-          archivo.close();
+          if (archivo == null){
+              
+          }else{
+            archivo.close();
+          }
       }
 
     }
