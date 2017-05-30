@@ -63,8 +63,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         scroll = new javax.swing.JScrollPane();
         jtxtCode = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtxtTokens = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtxtError = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
@@ -88,6 +86,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jtxtCode.setColumns(20);
+        jtxtCode.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         jtxtCode.setRows(5);
         scroll.setViewportView(jtxtCode);
 
@@ -97,11 +96,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-
-        jtxtTokens.setEditable(false);
-        jtxtTokens.setColumns(20);
-        jtxtTokens.setRows(5);
-        jScrollPane2.setViewportView(jtxtTokens);
 
         jtxtError.setColumns(20);
         jtxtError.setRows(5);
@@ -184,11 +178,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -198,7 +188,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scroll, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -209,13 +200,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
-                    .addComponent(scroll))
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -223,54 +212,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        StringReader cad= new StringReader(jtxtCode.getText());
-        Reader red= new BufferedReader(cad);
-        TablaSimbolos t=new TablaSimbolos();
-        Lexer lex = new Lexer(red,t);
-        jtxtTokens.setText("");
-        jtxtError.setText("");
-        jtxtError.setForeground(Color.red);
-        Token token=null;
-        do{
-            try {
-                token = lex.yylex();
-            } catch (IOException ex) {
-                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(token!=null){
-               // jtxtTokens.setText(jtxtTokens.getText()+"EOF"+"\n");
-                //System.out.println("EOF");
-               
-            
-            switch(token){
-      case ID:case INT:case OPARIT:case OPLOG:case OPREL:case FLOAT:case PALRES: case OPASIG: case OPAGR: case ENDLN:
-                    jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
-                    
-                    //System.out.println("TOKEN: "+token+" "+lexer.lexeme);
-                break;
-                case ERROR:
-                    jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
-                    jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+" en la "
-                            + "cadena "+(lex.lexeme)+". La cadena no es válida para el lenguaje."+"\n");
-                    break;
-                default:
-                    jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
-                    //System.out.println("TOKEN: "+token);
-            }
-            }
-        }while(token!=null);
         
-        t.imprimir();
-        if(!jtxtError.getText().isEmpty()){
-            jtxtError.setForeground(Color.red);
-            jtxtError.setText(jtxtError.getText());
-        }
-        else{
-            jtxtError.setForeground(Color.blue);
-            jtxtError.setText("Compilación correcta!");
-        }
     }//GEN-LAST:event_jButton1MouseClicked
 
+  
+    
     public void abrirArchivo() throws FileNotFoundException, IOException{
         String aux="";  
         String texto = "";
@@ -429,11 +375,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jtxtCode;
     private javax.swing.JTextArea jtxtError;
-    private javax.swing.JTextArea jtxtTokens;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
