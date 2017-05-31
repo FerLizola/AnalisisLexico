@@ -6,6 +6,7 @@
 package analisislexico;
 
 import java.awt.Color;
+import java.awt.Event;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,10 +19,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.JFileChooser;
+import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -33,23 +39,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
-        /*JFrame f = new JFrame();
-                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                JTextArea jta = new JTextArea();
-                jta.setWrapStyleWord(true);
-                jta.setLineWrap(true);
-                jta.setText("");
-                JScrollPane scroll = new JScrollPane(jta);
-                scroll.setRowHeaderView(new LineNumber(jta));
-                f.getContentPane().add(scroll);
-                f.setSize(350, 350);
-                f.setVisible(true);*/
+        
+        ActionMap acciones;    
+        
+    
         initComponents();
+        
+        acciones = jtxtCode.getActionMap();
+        Action accionCopiar = acciones.get(DefaultEditorKit.copyAction);
+        Action accionPegar = acciones.get(DefaultEditorKit.pasteAction);
+        Action accionCortar = acciones.get(DefaultEditorKit.cutAction);
+        
+        accionCopiar.putValue(Action.NAME, "Copiar");
+        accionCopiar.putValue(
+        Action.ACCELERATOR_KEY,
+        KeyStroke.getAWTKeyStroke('C', Event.CTRL_MASK)); 
+        
+        accionPegar.putValue(Action.NAME, "Pegar");
+        accionPegar.putValue(
+        Action.ACCELERATOR_KEY,
+        KeyStroke.getAWTKeyStroke('V', Event.CTRL_MASK)); 
+        
+        accionCortar.putValue(Action.NAME, "Cortar");
+        accionCortar.putValue(
+        Action.ACCELERATOR_KEY,
+        KeyStroke.getAWTKeyStroke('X', Event.CTRL_MASK)); 
+        
+        
+        
         jtxtCode.setWrapStyleWord(true);
         jtxtCode.setLineWrap(true);
         jtxtCode.setText("");
         scroll.setRowHeaderView(new LineNumber(jtxtCode));
+        
+        jMenu2.add(accionCopiar);
+        jMenu2.add(accionPegar);
+        jMenu2.add(accionCortar);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,9 +101,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JMenuItem();
         btnNuevo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        btnCopiar = new javax.swing.JMenuItem();
-        btnPegar = new javax.swing.JMenuItem();
-        btnCortar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -154,19 +178,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
-
-        btnCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        btnCopiar.setText("Copiar");
-        jMenu2.add(btnCopiar);
-
-        btnPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
-        btnPegar.setText("Pegar");
-        jMenu2.add(btnPegar);
-
-        btnCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
-        btnCortar.setText("Cortar");
-        jMenu2.add(btnCortar);
-
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -363,7 +374,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         // TODO add your handling code here:
-        System.out.println("Resizeble");
     }//GEN-LAST:event_formComponentResized
 
     /**
@@ -408,12 +418,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAbrir;
-    private javax.swing.JMenuItem btnCopiar;
-    private javax.swing.JMenuItem btnCortar;
     private javax.swing.JMenuItem btnGuardar;
     private javax.swing.JMenuItem btnNuevo;
     private javax.swing.JButton btnOpen;
-    private javax.swing.JMenuItem btnPegar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
