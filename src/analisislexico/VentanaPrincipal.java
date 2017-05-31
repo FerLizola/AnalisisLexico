@@ -212,7 +212,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        StringReader cad= new StringReader(jtxtCode.getText());
+        Reader red= new BufferedReader(cad);
+        TablaSimbolos t=new TablaSimbolos();
+        Lexer lex = new Lexer(red,t);
+        //jtxtTokens.setText("");
+        jtxtError.setText("");
+        jtxtError.setForeground(Color.red);
+        Token token=null;
+        do{
+            try {
+                token = lex.yylex();
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(token!=null){
+               // jtxtTokens.setText(jtxtTokens.getText()+"EOF"+"\n");
+                //System.out.println("EOF");
+               
+            
+            switch(token){
+      case ID:case INT:case OPARIT:case OPLOG:case OPREL:case FLOAT:case PALRES: case OPASIG: case OPAGR: case ENDLN:
+                    //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
+                    
+                    //System.out.println("TOKEN: "+token+" "+lexer.lexeme);
+                break;
+                case ERROR:
+                    //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
+                    jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+" en la "
+                            + "cadena "+(lex.lexeme)+". La cadena no es válida para el lenguaje."+"\n");
+                    break;
+                default:
+                    //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
+                    //System.out.println("TOKEN: "+token);
+            }
+            }
+        }while(token!=null);
         
+        t.imprimir();
+        if(!jtxtError.getText().isEmpty()){
+            jtxtError.setForeground(Color.red);
+            jtxtError.setText(jtxtError.getText());
+        }
+        else{
+            jtxtError.setForeground(Color.blue);
+            jtxtError.setText("Compilación correcta!");
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
   
