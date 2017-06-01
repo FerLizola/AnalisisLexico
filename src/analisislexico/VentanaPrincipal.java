@@ -24,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -66,6 +67,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         KeyStroke.getAWTKeyStroke('X', Event.CTRL_MASK)); 
         
         
+        accionCopiar.putValue (Action.SMALL_ICON, new ImageIcon("src/Copy.png"));
+        accionCortar.putValue (Action.SMALL_ICON, new ImageIcon("src/Cut.png"));
+        accionPegar.putValue (Action.SMALL_ICON, new ImageIcon("src/Paste.png")); 
         
         jtxtCode.setWrapStyleWord(true);
         jtxtCode.setLineWrap(true);
@@ -105,9 +109,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JMenuItem();
         btnNuevo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,23 +160,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284061_edit-cut.png")); // NOI18N
-
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284600_Paste.png")); // NOI18N
-
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284828_Copy.png")); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496304248_document_16.png")); // NOI18N
-
         jMenu1.setText("Archivo");
 
         btnAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        btnAbrir.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496303800_Open.png")); // NOI18N
         btnAbrir.setText("Abrir");
         btnAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,31 +183,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu1.add(btnAbrir);
 
         btnGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496304285_save.png")); // NOI18N
         btnGuardar.setText("Guardar");
         jMenu1.add(btnGuardar);
 
         btnNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        btnNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496304248_document_16.png")); // NOI18N
         btnNuevo.setText("Nuevo");
         jMenu1.add(btnNuevo);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
-
-        jMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284828_Copy.png")); // NOI18N
-        jMenuItem1.setText("Copiar");
-        jMenu2.add(jMenuItem1);
-
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284600_Paste.png")); // NOI18N
-        jMenuItem2.setText("Pegar");
-        jMenu2.add(jMenuItem2);
-
-        jMenuItem3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Abril\\Pictures\\1496284061_edit-cut.png")); // NOI18N
-        jMenuItem3.setText("Cortar");
-        jMenu2.add(jMenuItem3);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Compilar");
@@ -489,9 +467,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jtxtCode;
     private javax.swing.JTextArea jtxtError;

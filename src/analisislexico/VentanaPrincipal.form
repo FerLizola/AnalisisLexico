@@ -14,9 +14,6 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496303800_Open.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Abrir"/>
               </Properties>
               <Events>
@@ -29,9 +26,6 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496304285_save.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
             </MenuItem>
@@ -39,9 +33,6 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+N"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496304248_document_16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo"/>
               </Properties>
@@ -52,32 +43,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496284828_Copy.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Copiar"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496284600_Paste.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pegar"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Abril\Pictures\1496284061_edit-cut.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cortar"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
@@ -241,35 +206,15 @@
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Abril\Pictures\1496284061_edit-cut.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Abril\Pictures\1496284600_Paste.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Abril\Pictures\1496284828_Copy.png"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Abril\Pictures\1496304248_document_16.png"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
