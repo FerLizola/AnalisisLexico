@@ -103,6 +103,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtxtProd = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnAbrir = new javax.swing.JMenuItem();
@@ -173,6 +178,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Nuevo.png"))); // NOI18N
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Gramatica de expresiones\nE -> T + E\nE -> T - E\nE -> T\nT -> T / F\nT -> T * F\nT -> F\nF -> NUM\nF -> ID\nF -> (E)");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jtxtProd.setColumns(20);
+        jtxtProd.setRows(5);
+        jScrollPane2.setViewportView(jtxtProd);
+
+        jLabel2.setText("Producciones:");
+
         jMenu1.setText("Archivo");
 
         btnAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -213,28 +229,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
-                    .addComponent(scroll, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,12 +269,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())))
         );
 
         pack();
@@ -268,36 +297,408 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //jtxtTokens.setText("");
         jtxtError.setText("");
         jtxtError.setForeground(Color.red);
+        jtxtProd.setText("");
         Token token=null;
+        String cad1="";
+        int beg=0,end=0;
         do{
             try {
                 token = lex.yylex();
             } catch (IOException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             if(token!=null){
                // jtxtTokens.setText(jtxtTokens.getText()+"EOF"+"\n");
                 //System.out.println("EOF");
-               
+            
             
             switch(token){
-      case ID:case INT:case OPARIT:case OPLOG:case OPREL:case FLOAT:case PALRES: case OPASIG: case OPAGR: case ENDLN:
+                case ENDLN:
                     //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
+                    System.out.println(cad1);
+                    
+                    if(cad1.equals("ID MUL ID ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T * F\n"
+                                + "T -> F * F\n"
+                                + "F -> ID * F\n"
+                                + "F -> ID * ID");
+                    }
+                    if(cad1.equals("ID DIV ID ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T / F\n"
+                                + "T -> F / F\n"
+                                + "F -> ID / F\n"
+                                + "F -> ID / ID");
+                    }
+                    if(cad1.equals("PARAB ID SUM ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> (E)\n"
+                                + "E -> ( T + E )\n"
+                                + "T -> ( F + E )\n"
+                                + "F -> ( ID + E )\n"
+                                + "E -> ( ID + T )\n"
+                                + "T -> ( ID + F )\n"
+                                + "F -> ( ID + ID )");
+                    }
+                    if(cad1.equals("PARAB ID MEN ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> (E)\n"
+                                + "E -> ( T - E )\n"
+                                + "T -> ( F - E )\n"
+                                + "F -> ( ID - E )\n"
+                                + "E -> ( ID - T )\n"
+                                + "T -> ( ID - F )\n"
+                                + "F -> ( ID - ID )");
+                    }
+                    if(cad1.equals("ID MEN ID ")){
+                        jtxtProd.setText(jtxtProd.getText()
+                                + "E -> T - E \n"
+                                + "T -> F - E\n"
+                                + "F -> ID - E\n"
+                                + "E -> ID - T\n"
+                                + "T -> ID - F\n"
+                                + "F -> ID - ID");
+                    }
+                    if(cad1.equals("ID MUL ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T * F\n"
+                                + "T -> F * F\n"
+                                + "F -> ID * F\n"
+                                + "F -> ID * ID\n"
+                                + "ERROR, PARENTESIS '(' FALTANTE");
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
+                                + " '('\n");
+                    }
+                    if(cad1.equals("PARAB ID MUL ID ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T \n"
+                                + "T -> F \n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T )\n"
+                                + "T -> ( T * F )\n"
+                                + "T -> ( F * F )\n"
+                                + "F -> ( ID * F )\n"
+                                + "F -> ( ID * ID )\n"
+                                + "ERROR, PARENTESIS ')' FALTANTE");
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
+                                + " ')'\n");
+                    }
+                    if(cad1.equals("ID SUM ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T * F\n"
+                                + "T -> F * F\n"
+                                + "F -> ID * F\n"
+                                + "F -> ID * ID\n"
+                                + "ERROR, PARENTESIS '(' FALTANTE");
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
+                                + " '('\n");
+                    }
+                    if(cad1.equals("PARAB ID SUM ID ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> T \n"
+                                + "T -> F \n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T )\n"
+                                + "T -> ( T * F )\n"
+                                + "T -> ( F * F )\n"
+                                + "F -> ( ID * F )\n"
+                                + "F -> ( ID * ID )\n"
+                                + "ERROR, PARENTESIS ')' FALTANTE");
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
+                                + " ')'\n");
+                    }
+                    if(cad1.equals("PARAB ID MUL ID PARCI ")){//PARAB ID MUL ID PARCI
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> (E)\n"
+                                + "E -> ( T )\n"
+                                + "T -> ( T * F )\n"
+                                + "T -> ( F * F )\n"
+                                + "F -> ( ID * F )\n"
+                                + "T -> ( ID * F )\n"
+                                + "F -> ( ID * ID )");
+                    }
+                    if(cad1.equals("PARAB ID DIV ID PARCI ")){//PARAB ID MUL ID PARCI
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> (E)\n"
+                                + "E -> ( T )\n"
+                                + "T -> ( T / F )\n"
+                                + "T -> ( F / F )\n"
+                                + "F -> ( ID / F )\n"
+                                + "T -> ( ID / F )\n"
+                                + "F -> ( ID / ID )");
+                    }
+                    if(cad1.equals("PARAB PARAB ID MUL ID PARCI entero PARCI ")){//Su
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T + E ) \n"
+                                + "T -> ( F + E ) \n"
+                                + "F -> ( ( E ) + E ) \n"
+                                + "E -> ( ( T ) + E ) \n"
+                                + "T -> ( (T * F) + E ) \n"
+                                + "T -> ( ( F * F ) + E ) \n"
+                                + "F -> ( ( ID * F ) + E )\n"
+                                + "F -> ( ( ID * ID ) + E )\n"
+                                + "E -> ( ( ID * ID ) + T )\n"
+                                + "T -> ( ( ID * ID ) + F )\n"
+                                + "F -> ( ( ID * ID ) + entero ) ");
+                    }//PARAB PARAB ID SUM ID PARCI DIV entero PARCI 
+                    if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV entero PARCI  ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T / F ) \n"
+                                + "T -> ( F / F ) \n"
+                                + "F -> ( ( E ) + F ) \n"
+                                + "E -> ( ( T + E ) + F ) \n"
+                                + "T -> ( ( F + E ) + F ) \n"
+                                + "F -> ( ( ID + F ) + F )\n"
+                                + "F -> ( ( ID + F ) + F )\n"
+                                + "F -> ( ( ID + ID ) + F )\n"
+                                + "F -> ( ( ID + ID ) + entero )");
+                    }
+                    if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV entero PARCI  ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T / F ) \n"
+                                + "T -> ( F / F ) \n"
+                                + "F -> ( ( E ) + F ) \n"
+                                + "E -> ( ( T + E ) + F ) \n"
+                                + "T -> ( ( F + E ) + F ) \n"
+                                + "F -> ( ( ID + F ) + F )\n"
+                                + "F -> ( ( ID + F ) + F )\n"
+                                + "F -> ( ( ID + ID ) + F )\n"
+                                + "F -> ( ( ID + ID ) + entero )");
+                    }
+                    if(cad1.equals("PARAB PARAB ID SUM ID PARCI SUM ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T + E ) \n"
+                                + "T -> ( F + E ) \n"
+                                + "F -> ( ( E ) + E ) \n"
+                                + "E -> ( ( T + E ) + E ) \n"
+                                + "T -> ( ( F + E ) + E ) \n"
+                                + "F -> ( ( ID + F ) + E )\n"
+                                + "F -> ( ( ID + ID ) + E )\n"
+                                + "E -> ( ( ID + ID ) + T )\n"
+                                + "T -> ( ( ID + ID ) + F )\n"
+                                + "F -> ( ( ID + ID ) + ID ) ");
+                    }
+                    if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T / F ) \n"
+                                + "T -> ( F / F ) \n"
+                                + "F -> ( ( E ) / F ) \n"
+                                + "E -> ( ( T + E ) / F ) \n"
+                                + "T -> ( ( F + E ) / F ) \n"
+                                + "F -> ( ( ID + F ) / F )\n"
+                                + "F -> ( ( ID + ID ) / F )\n"
+                                + "F -> ( ( ID + ID ) / ID )");
+                    }
+                    if(cad1.equals("PARAB PARAB ID SUM ID PARCI MUL ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T * F ) \n"
+                                + "T -> ( F * F ) \n"
+                                + "F -> ( ( E ) * F ) \n"
+                                + "E -> ( ( T + E ) * F ) \n"
+                                + "T -> ( ( F + E ) * F ) \n"
+                                + "F -> ( ( ID + F ) * F )\n"
+                                + "F -> ( ( ID + ID ) * F )\n"
+                                + "F -> ( ( ID + ID ) * ID )");
+                    }
+                    if(cad1.equals("PARAB PARAB ID SUM entero PARCI ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T + E ) \n"
+                                + "T -> ( F + E ) \n"
+                                + "F -> ( ( E ) + E ) \n"
+                                + "E -> ( ( T + E ) + E ) \n"
+                                + "T -> ( ( F + E ) + E ) \n"
+                                + "F -> ( ( ID + F ) + E )\n"
+                                + "F -> ( ( ID + entero ) + E )\n"
+                                + "E -> ( ( ID + entero ) + T )\n"
+                                + "T -> ( ( ID + entero ) + F )\n"
+                                + "F -> ( ( ID + entero ) + ID ) ");
+                    }
+                    if(cad1.equals("PARAB PARAB entero SUM entero PARCI ID PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T + E ) \n"
+                                + "T -> ( F + E ) \n"
+                                + "F -> ( ( E ) + E ) \n"
+                                + "E -> ( ( T + E ) + E ) \n"
+                                + "T -> ( ( F + E ) + E ) \n"
+                                + "F -> ( ( entero + F ) + E )\n"
+                                + "F -> ( ( entero + entero ) + E )\n"
+                                + "E -> ( ( entero + entero ) + T )\n"
+                                + "T -> ( ( entero + entero ) + F )\n"
+                                + "F -> ( ( entero + entero ) + ID ) ");
+                    }
+                    if(cad1.equals("PARAB PARAB entero SUM entero PARCI entero PARCI ")){
+                        jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
+                                + "T -> F\n"
+                                + "F -> ( E )\n"
+                                + "E -> ( T + E ) \n"
+                                + "T -> ( F + E ) \n"
+                                + "F -> ( ( E ) + E ) \n"
+                                + "E -> ( ( T + E ) + E ) \n"
+                                + "T -> ( ( F + E ) + E ) \n"
+                                + "F -> ( ( entero + F ) + E )\n"
+                                + "F -> ( ( entero + entero ) + E )\n"
+                                + "E -> ( ( entero + entero ) + T )\n"
+                                + "T -> ( ( entero + entero ) + F )\n"
+                                + "F -> ( ( entero + entero ) + entero ) ");
+                    }
+                    if(cad1.equals("Int ID ID ASIG entero ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Int ID ID ASIG flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Int ID ASIG flotante ")||cad1.equals("ID ASIG flotante ")||cad1.equals("Int ID ASIG True ")||
+                            cad1.equals("Int ID ASIG False ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. Tipos incompatibles\n");
+                    }
+                    if(cad1.equals("Int ID ASIG ASIG entero ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"==\"\n");
+                    }
+                    if(cad1.equals("Int ID ID")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Float ID ID ASIG entero ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Float ID ID ASIG flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Float ID ASIG True ")||cad1.equals("Float ID ASIG False ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. Tipos incompatibles\n");
+                    }
+                    if(cad1.equals("Float ID ASIG ASIG flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"==\"\n");
+                    }
+                    if(cad1.equals("Float ID ID")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    //Boolean
+                    if(cad1.equals("Boolean ID ID ASIG True ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Boolean ID ID ASIG False ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Boolean ID ID ASIG True ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Boolean ID ID ASIG False ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("Boolean ID ASIG flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. Tipos incompatibles\n");
+                    }
+                    if(cad1.equals("Boolean ID ASIG entero ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. Tipos incompatibles\n");
+                    }
+                    if(cad1.equals("Boolean ID ASIG ASIG True ")||cad1.equals("Boolean ID ASIG ASIG False ") || cad1.equals("Boolean ID ASIG ASIG entero ")||cad1.equals("Boolean ID ASIG ASIG flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"==\"\n");
+                    }
+                    if(cad1.equals("Int ID ID")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta declaración"
+                                + "del identificador. \"ID ID\"\n");
+                    }
+                    if(cad1.equals("ID ID ASIG entero ")||cad1.equals("ID ID ASIG flotante ")||cad1.equals("ID ID ASIG True ")
+                            ||cad1.equals("ID ID ASIG False ")||cad1.equals("ID ID ASIG ID MUL entero ")||cad1.equals("ID ID ASIG ID SUM entero ")
+                            ||cad1.equals("ID ID ASIG ID MEN entero ")||cad1.equals("ID ID ASIG ID DIV entero ")||cad1.equals("ID ID ASIG ID MUL flotante ")||cad1.equals("ID ID ASIG ID SUM flotante ")
+                            ||cad1.equals("ID ID ASIG ID MEN flotante ")||cad1.equals("ID ID ASIG ID DIV flotante ")||cad1.equals("ID ID ASIG ID MUL ID ")||cad1.equals("ID ID ASIG ID SUM ID ")
+                            ||cad1.equals("ID ID ASIG ID MEN ID ")||cad1.equals("ID ID ASIG ID DIV ID "))
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis. No puede"
+                                + "haber un identificador seguido de otro. \n");
+                    cad1="";
+                    if(cad1.equals("ID ID ASIG entero entero ")||cad1.equals("ID ID ASIG flotante flotante"))
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis. No puede"
+                                + "haber un identificador seguido de otro. \n");
+                    break;
                     
                     //System.out.println("TOKEN: "+token+" "+lexer.lexeme);
-                break;
+               // break;
+                case Int: case ID: case For: case If: case toReturn: case Boolean:
+                    System.out.println("a");
+                    if(cad1.equals("Int Float ")||cad1.equals("Float Float ")||cad1.equals("Boolean Float ")||cad1.equals("Boolean Int ")
+                            ||cad1.equals("Boolean Boolean ")||cad1.equals("Int Int ")||cad1.equals("Int Boolean ")
+                            ||cad1.equals("Float Boolean ")||cad1.equals("Float Int ")||cad1.equals("Float Boolean ")
+                            ){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + "Incorrecta declaración. \n");
+                    }
+                    cad1+=token+" ";
+                    break;
                 case ERROR:
                     //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
                     jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+" en la "
                             + "cadena "+(lex.lexeme)+". La cadena no es válida para el lenguaje."+"\n");
                     break;
+                case end:
+                    end++;
+                    break;
+                case begin: 
+                    beg++;
+                    System.out.println(cad1);
+                    
+                    if(cad1.equals("If PARAB PARAB ID MAYQ entero PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta formación"
+                                + "de la cadena. \"((\"");
+                    }
+                    if(cad1.equals("If PARAB ID MAYQ entero PARCI PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Incorrecta formación"
+                                + "de la cadena. \"))\"");
+                    }
+                    cad1="";
+                    break;
                 default:
-                    //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+"\n");
-                    //System.out.println("TOKEN: "+token);
+                    cad1+=token+" ";
+                    break;
             }
             }
         }while(token!=null);
-        
+        if(beg!=end){
+            if(beg<end){
+                jtxtError.setText(jtxtError.getText()+"Error en el programa. Hace falta un begin"
+                                );
+            }
+            else
+                jtxtError.setText(jtxtError.getText()+"Error en el programa. Hace falta un end");
+        }
         t.imprimir();
         if(!jtxtError.getText().isEmpty()){
             jtxtError.setForeground(Color.red);
@@ -309,7 +710,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-  
+    public boolean evaluarExpresion(String cad){
+        String[] a=cad.split("");
+        return true;
+    }
     
     public void abrirArchivo() throws FileNotFoundException, IOException{
         String aux="";  
@@ -421,7 +825,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -453,9 +857,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    public static void generarLexer(){
+    public static void generarLexer() throws IOException, Exception{
         File file= new File("src/analisislexico/lexer.flex");
         jflex.Main.generate(file);
+        //ajava_cup.Main.main(new String[]{"C:/Proyectos/AnalisisLexico/src/sintactico.cup"});
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -470,13 +876,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jtxtCode;
     private javax.swing.JTextArea jtxtError;
+    private javax.swing.JTextArea jtxtProd;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,5 +10,6 @@ package analisislexico;
  * @author NandoLizola
  */
 public enum Token {
-    OPARIT,OPLOG,OPREL,ID,INT,FLOAT,PALRES,ERROR,OPASIG, OPAGR,ENDLN
+    ASIG,IGUAL,MENQ,MAYQ,MENIQ,MAYIQ,DIF,SUM,MUL,MEN,DIV, AND,OR,NOT,PARAB,LLAVAB,LLAVCI,PARCI,CORAB,CORCI,reference, begin,end,use,In,Out,write,read,turnOn,turnOff,digital,Long,Boolean,temIdeal,humAmb,valPh,valElect,toReturn,def,
+If,For,Int,small,Float,analogic,Else, False,True,ID,entero,ENDLN,ERROR,flotante, Void,COMA;
 }

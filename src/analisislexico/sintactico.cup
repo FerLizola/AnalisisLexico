@@ -1,0 +1,196 @@
+package analisislexico;
+import java.io.*;
+import java_cup.runtime.*;
+import java.util.Vector; 
+init with {: scanner.init();              :};
+scan with {: return scanner.next_token(); :};
+parser code
+{:
+        Vector ERRORES = new Vector();
+        
+        public void syntax_error(java_cup.runtime.Symbol s){
+                if(s.left>0)ERRORES.add( new YyError(s.value,s.right + 1,s.left,"La sentencia no tiene sentido",401));
+		report_error("Error de sintaxis. Linea: " + (s.right + 1) +" Columna: " +s.left + ". Texto: \"" + s.value + "\"", null);
+	}
+
+        public void unrecovered_syntax_error(java_cup.runtime.Symbol s) throws java.lang.Exception {
+            report_fatal_error("", null);
+        }
+
+        public Vector getVectorError(){
+            return ERRORES;
+        }
+:}
+
+terminal String ASIG,IGUAL,MENQ,MAYQ,MENIQ,MAYIQ,DIF,SUM,MUL,MEN,DIV;
+terminal String AND,OR,NOT,PARAB,LLAVAB,LLAVCI,PARCI,CORAB,CORCI,reference;
+terminal String begin,end,use,In,Out,write,read,turnOn,COMA;
+terminal String turnOf,digital,Long,Boolean,temIdeal,humAmb,valPh,valElect,toReturn;
+terminal String def,If,For,Int,small,Float,analogic,Else, False,True,ID,entero,ENDLN,ERROR,flotante,Void;
+
+non terminal funciones, valores, funcion, param, defFun, mem, casoInt, OpArit, opRel, expresion;
+non terminal tiposDatos, asigna, declarar, opLog, condicion, compIf, cicloIf, inicializa;
+non terminal cicloGen, cicloFor, palAisladas, sentencia,datos,booleano;
+
+precedence left SUM,MEN;
+precedence left MUL,DIV;
+
+
+funciones ::=   temIdeal 
+                | humAmb 
+                | valPh 
+                | valElect
+                | error
+                ;
+
+valores ::=     flotante
+                | ID
+                | entero
+                | True
+                | False
+                | error
+                ;
+
+funcion ::=     funciones PARAB valores PARCI ENDLN
+                | error
+                ;
+
+datos ::=       Boolean
+                | Int
+                | Float
+                | error
+                ;
+
+param ::=       datos ID
+                | datos ID COMA param
+                |error
+                ;
+
+defFun ::=      def datos ID PARAB param PARCI begin sentencia toReturn valores sentencia end ENDLN
+                | def datos ID PARAB PARCI begin sentencia toReturn valores sentencia end ENDLN
+                | def datos ID PARAB PARCI begin toReturn valores sentencia end ENDLN
+                | def datos ID PARAB PARCI begin toReturn valores end ENDLN
+                | def datos ID PARAB param PARCI begin sentencia toReturn valores end ENDLN
+                | def datos ID PARAB param PARCI begin toReturn valores sentencia end ENDLN
+                | def datos ID PARAB param PARCI begin sentencia toReturn valores sentencia end ENDLN
+                | def Void ID PARAB param PARCI begin sentencia end ENDLN
+                | def Void ID PARAB PARCI begin sentencia end ENDLN
+                | def Void ID PARAB param PARCI begin end ENDLN
+                |def Void ID PARAB PARCI begin end ENDLN
+                | error
+                ;
+
+mem ::=     Long
+            |small
+            |error
+            ;
+
+casoInt ::=     mem Int
+                |error 
+                ;
+
+OpArit ::=      SUM
+                | MUL
+                | MEN 
+                | DIV
+                | error
+                ;
+
+opRel ::=       IGUAL
+                | MENQ
+                | MAYQ
+                | MENIQ
+                | MAYIQ
+                | DIF
+                | error
+                ;
+
+expresion ::=   ID
+                | entero
+                | flotante
+                | expresion OpArit expresion
+                | PARAB expresion PARCI
+                | error
+                ;
+
+tiposDatos ::=  Float
+                | digital
+                | analogic
+                | casoInt
+                | Boolean
+                | error
+                ;
+
+asigna ::=      ASIG valores
+                | expresion
+                | error
+                ;
+
+declarar ::=    tiposDatos ID asigna ENDLN
+                | tiposDatos ID ENDLN
+                | error
+                ;
+
+
+opLog ::=       AND
+                | OR
+                | error
+                ;
+
+
+condicion ::=   expresion opRel expresion
+                | NOT condicion
+                | booleano
+                | PARAB condicion PARCI
+                | condicion opLog condicion
+                | error
+                ;
+
+compIf ::=      Else begin sentencia end
+                | error
+                ;
+
+cicloIf ::=     If PARAB condicion PARCI begin sentencia end compIf
+                | If PARAB condicion PARCI begin sentencia end 
+                | error
+                ;
+
+inicializa ::=  Int ID ASIG entero
+                | entero
+                | ID
+                | error 
+                ;
+booleano ::=    True
+                | False
+                | error
+                ;
+cicloGen ::=    booleano
+                | condicion
+                | error
+                ;
+
+
+cicloFor ::=    For PARAB ENDLN cicloGen ENDLN expresion PARCI begin sentencia end
+                | For PARAB inicializa ENDLN cicloGen ENDLN expresion PARCI begin sentencia end
+                | error
+                ;
+
+palAisladas ::=     use ID
+                    | reference ID In 
+                    | reference ID Out 
+                    | write ID
+                    | read ID
+                    | reference ID
+                    | ERROR
+                    | error
+                    ;
+
+sentencia ::=    palAisladas
+                | cicloFor
+                | cicloIf
+                | funcion
+                | defFun
+                | expresion
+                | declarar
+                | error
+                ;
