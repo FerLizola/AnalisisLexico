@@ -537,6 +537,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 case ENDLN:
                     //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
                     //System.out.println(cad1);
+                    //ERRORES
                     if(cad1.equals("temIdeal PARAB A0 COMA flotante PARCI ")){
                         
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
@@ -600,6 +601,390 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
                                 + " '('\n");
                     }
+                    //humAmb
+                    if(cad1.equals("humAmb PARAB A0 COMA flotante PARCI ")){
+                        
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("humAmb PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("humAmb A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAm A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("humAmb A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    
+                    //valPh
+                    if(cad1.equals("valPh PARAB A0 COMA flotante PARCI ")){
+                        
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("valPh PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("valPh A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valPh A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    
+                    //valMineral
+                    if(cad1.equals("valMineral PARAB A0 COMA flotante PARCI ")){
+                        
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("valMineral PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("valMineral A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valMineral A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    //valIlum
+                    if(cad1.equals("valIlum PARAB A0 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("valIlum PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("valIlum A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("valIlum A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    //BombAgua
+                    if(cad1.equals("bombAgua PARAB A0 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("bombAgua PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("bombAgua A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombAgua A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    //bombPh
+                    if(cad1.equals("bombPh PARAB A0 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("bombPh PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("bombPh A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("bombPh A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    
                     
                     //GRAMATICAS ANTERIORES
                     if(cad1.equals("ID MUL ID ")){
