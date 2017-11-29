@@ -26,12 +26,7 @@ public class Archivo {
         this.agua=agua;
         this.ph=ph;
         this.sust=sust;
-        
-    }
-    static float min_hum,min_luz,min_ph,min_agua,min_sust;
-    static String hum,luz,ph,agua,sust;
-    static int out_hum,out_luz,out_ph,out_agua,out_sust;
-    static String codigo = "int hum ="+ hum+";\n" +
+        codigo= "int hum ="+ hum+";\n" +
                     "int luz ="+ luz+";\n" +
                     "int ph ="+ ph+";\n" +
                     "int agua = "+agua+";\n" +
@@ -89,6 +84,11 @@ public class Archivo {
                     "  }\n" +
                     "  \n" +
                     "}";
+    }
+    static float min_hum,min_luz,min_ph,min_agua,min_sust;
+    static String hum,luz,ph,agua,sust;
+    static int out_hum,out_luz,out_ph,out_agua,out_sust;
+    static String codigo;
     
     String getCode(){return codigo;}
     public void crearArchivo(String ruta, String nombre, String codigo) throws IOException{
