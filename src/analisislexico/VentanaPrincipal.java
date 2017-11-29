@@ -39,6 +39,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    String cad="";
     public VentanaPrincipal() {
         
         ActionMap acciones;    
@@ -126,6 +127,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jtxtCode.setColumns(20);
         jtxtCode.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         jtxtCode.setRows(5);
+        jtxtCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtCodeKeyTyped(evt);
+            }
+        });
         scroll.setViewportView(jtxtCode);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/compile.png"))); // NOI18N
@@ -323,14 +329,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> T * F\n"
                                 + "T -> F * F\n"
                                 + "F -> ID * F\n"
-                                + "F -> ID * ID");
+                                + "F -> ID * ID\n\n");
                     }
                     if(cad1.equals("ID DIV ID ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
                                 + "T -> T / F\n"
                                 + "T -> F / F\n"
                                 + "F -> ID / F\n"
-                                + "F -> ID / ID");
+                                + "F -> ID / ID\n\n");
                     }
                     if(cad1.equals("PARAB ID SUM ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -341,7 +347,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ID + E )\n"
                                 + "E -> ( ID + T )\n"
                                 + "T -> ( ID + F )\n"
-                                + "F -> ( ID + ID )");
+                                + "F -> ( ID + ID )\n\n");
                     }
                     if(cad1.equals("PARAB ID MEN ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -352,7 +358,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ID - E )\n"
                                 + "E -> ( ID - T )\n"
                                 + "T -> ( ID - F )\n"
-                                + "F -> ( ID - ID )");
+                                + "F -> ( ID - ID )\n\n");
                     }
                     if(cad1.equals("ID MEN ID ")){
                         jtxtProd.setText(jtxtProd.getText()
@@ -361,7 +367,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ID - E\n"
                                 + "E -> ID - T\n"
                                 + "T -> ID - F\n"
-                                + "F -> ID - ID");
+                                + "F -> ID - ID\n\n");
                     }
                     if(cad1.equals("ID MUL ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -369,7 +375,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> F * F\n"
                                 + "F -> ID * F\n"
                                 + "F -> ID * ID\n"
-                                + "ERROR, PARENTESIS '(' FALTANTE");
+                                + "ERROR, PARENTESIS '(' FALTANTE\n\n");
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
                                 + " '('\n");
                     }
@@ -383,7 +389,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( F * F )\n"
                                 + "F -> ( ID * F )\n"
                                 + "F -> ( ID * ID )\n"
-                                + "ERROR, PARENTESIS ')' FALTANTE");
+                                + "ERROR, PARENTESIS ')' FALTANTE\n\n");
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
                                 + " ')'\n");
                     }
@@ -393,7 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> F * F\n"
                                 + "F -> ID * F\n"
                                 + "F -> ID * ID\n"
-                                + "ERROR, PARENTESIS '(' FALTANTE");
+                                + "ERROR, PARENTESIS '(' FALTANTE\n\n");
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
                                 + " '('\n");
                     }
@@ -407,7 +413,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( F * F )\n"
                                 + "F -> ( ID * F )\n"
                                 + "F -> ( ID * ID )\n"
-                                + "ERROR, PARENTESIS ')' FALTANTE");
+                                + "ERROR, PARENTESIS ')' FALTANTE\n\n");
                         jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta del operador"
                                 + " ')'\n");
                     }
@@ -420,7 +426,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( F * F )\n"
                                 + "F -> ( ID * F )\n"
                                 + "T -> ( ID * F )\n"
-                                + "F -> ( ID * ID )");
+                                + "F -> ( ID * ID )\n\n");
                     }
                     if(cad1.equals("PARAB ID DIV ID PARCI ")){//PARAB ID MUL ID PARCI
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -431,7 +437,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( F / F )\n"
                                 + "F -> ( ID / F )\n"
                                 + "T -> ( ID / F )\n"
-                                + "F -> ( ID / ID )");
+                                + "F -> ( ID / ID )\n\n");
                     }
                     if(cad1.equals("PARAB PARAB ID MUL ID PARCI entero PARCI ")){//Su
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -447,7 +453,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( ID * ID ) + E )\n"
                                 + "E -> ( ( ID * ID ) + T )\n"
                                 + "T -> ( ( ID * ID ) + F )\n"
-                                + "F -> ( ( ID * ID ) + entero ) ");
+                                + "F -> ( ( ID * ID ) + entero ) \n\n");
                     }//PARAB PARAB ID SUM ID PARCI DIV entero PARCI 
                     if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV entero PARCI  ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -461,7 +467,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( ID + F ) + F )\n"
                                 + "F -> ( ( ID + F ) + F )\n"
                                 + "F -> ( ( ID + ID ) + F )\n"
-                                + "F -> ( ( ID + ID ) + entero )");
+                                + "F -> ( ( ID + ID ) + entero )\n\n");
                     }
                     if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV entero PARCI  ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -475,7 +481,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( ID + F ) + F )\n"
                                 + "F -> ( ( ID + F ) + F )\n"
                                 + "F -> ( ( ID + ID ) + F )\n"
-                                + "F -> ( ( ID + ID ) + entero )");
+                                + "F -> ( ( ID + ID ) + entero )\n\n");
                     }
                     if(cad1.equals("PARAB PARAB ID SUM ID PARCI SUM ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -490,7 +496,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( ID + ID ) + E )\n"
                                 + "E -> ( ( ID + ID ) + T )\n"
                                 + "T -> ( ( ID + ID ) + F )\n"
-                                + "F -> ( ( ID + ID ) + ID ) ");
+                                + "F -> ( ( ID + ID ) + ID )\n\n ");
                     }
                     if(cad1.equals("PARAB PARAB ID SUM ID PARCI DIV ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -503,7 +509,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( ( F + E ) / F ) \n"
                                 + "F -> ( ( ID + F ) / F )\n"
                                 + "F -> ( ( ID + ID ) / F )\n"
-                                + "F -> ( ( ID + ID ) / ID )");
+                                + "F -> ( ( ID + ID ) / ID )\n\n");
                     }
                     if(cad1.equals("PARAB PARAB ID SUM ID PARCI MUL ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -516,7 +522,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "T -> ( ( F + E ) * F ) \n"
                                 + "F -> ( ( ID + F ) * F )\n"
                                 + "F -> ( ( ID + ID ) * F )\n"
-                                + "F -> ( ( ID + ID ) * ID )");
+                                + "F -> ( ( ID + ID ) * ID )\n\n");
                     }
                     if(cad1.equals("PARAB PARAB ID SUM entero PARCI ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -531,7 +537,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( ID + entero ) + E )\n"
                                 + "E -> ( ( ID + entero ) + T )\n"
                                 + "T -> ( ( ID + entero ) + F )\n"
-                                + "F -> ( ( ID + entero ) + ID ) ");
+                                + "F -> ( ( ID + entero ) + ID )\n\n ");
+                        
                     }
                     if(cad1.equals("PARAB PARAB entero SUM entero PARCI ID PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -546,7 +553,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 + "F -> ( ( entero + entero ) + E )\n"
                                 + "E -> ( ( entero + entero ) + T )\n"
                                 + "T -> ( ( entero + entero ) + F )\n"
-                                + "F -> ( ( entero + entero ) + ID ) ");
+                                + "F -> ( ( entero + entero ) + ID )\n\n ");
                     }
                     if(cad1.equals("PARAB PARAB entero SUM entero PARCI entero PARCI ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
@@ -822,6 +829,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jtxtCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCodeKeyTyped
+        Character e=evt.getKeyChar();
+        if(e!='\b'){
+            cad+=e;
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_jtxtCodeKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -890,4 +907,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jtxtProd;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
+
+    private void eval(String cad) {
+        switch(cad){
+            case "":
+        
+        }
+    }
 }
