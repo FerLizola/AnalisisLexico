@@ -60,6 +60,19 @@ public int linea;
 "humAmb" {lexeme=yytext(); linea=yyline; return humAmb;}
 "valPh" {lexeme=yytext(); linea=yyline; return valPh;}
 "valElect" {lexeme=yytext(); linea=yyline; return valElect;}
+"valIlum" {lexeme=yytext(); linea=yyline; return valIlum;}
+"A0" {lexeme=yytext();linea=yyline;return A0;}
+"A1" {lexeme=yytext();linea=yyline;return A1;}
+"A2" {lexeme=yytext();linea=yyline;return A2;}
+"A3" {lexeme=yytext();linea=yyline;return A3;}
+"A4" {lexeme=yytext();linea=yyline;return A4;}
+"valMineral" {lexeme=yytext(); linea=yyline; return valMineral;}
+"bombAgua" {lexeme=yytext(); linea=yyline; return bombAgua;}
+"bombPh" {lexeme=yytext(); linea=yyline; return bombPh;}
+"onVent" {lexeme=yytext(); linea=yyline; return onVent;}
+"onLuz" {lexeme=yytext(); linea=yyline; return onLuz;}
+"bombMin" {lexeme=yytext(); linea=yyline; return bombaMin;}
+"bombDes" {lexeme=yytext(); linea=yyline; return bombDes;}
 "toReturn" {lexeme=yytext(); linea=yyline; return toReturn;}
 "def" {lexeme=yytext(); linea=yyline; return def;}
 "if" {lexeme=yytext(); linea=yyline; return If;}
@@ -76,8 +89,8 @@ public int linea;
                 Simbolo s;
                 if((s=tabla.buscar(lexeme))==null)
                     s=tabla.insertar(lexeme);return ID;}
+{D}+ ["."] {D}+ {lexeme=yytext(); linea=yyline; return flotante;}
 [-+]?{D}+ {lexeme=yytext(); linea=yyline; return entero;}
-{D}+ "." {D}+ {lexeme=yytext(); linea=yyline; return flotante;}
 ";" {lexeme=yytext(); linea=yyline; return ENDLN;}
 "," {lexeme=yytext(); linea=yyline; return COMA;}
 . {lexeme=yytext(); linea=yyline; return ERROR;}

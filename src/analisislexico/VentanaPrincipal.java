@@ -5,6 +5,7 @@
  */
 package analisislexico;
 
+import static analisislexico.Archivo.codigo;
 import java.awt.Color;
 import java.awt.Event;
 import java.io.BufferedInputStream;
@@ -39,9 +40,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    String cad="";
+    String cad="",hum,luz,ph,agua,sustrato;
+    float min_hum,min_luz,min_ph,min_agua,min_sust;
+    int bandera,out_hum,out_luz,out_ph,out_agua,out_sust,bandera1;
+    
     public VentanaPrincipal() {
-        
+        this.bandera = 0;
+        bandera1=0;
+        out_hum=0;
+        out_luz=0;
+        out_ph=0;
+        out_agua=0;
+        out_sust=0;
         ActionMap acciones;    
         
     
@@ -109,6 +119,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtxtProd = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        btnLoadArduino = new javax.swing.JButton();
+        cmbPort = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnAbrir = new javax.swing.JMenuItem();
@@ -195,6 +207,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Producciones:");
 
+        btnLoadArduino.setText("Cargar a Arduino");
+        btnLoadArduino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadArduinoActionPerformed(evt);
+            }
+        });
+
+        cmbPort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COM1", "COM2", "COM3", "COM4", "COM5" }));
+
         jMenu1.setText("Archivo");
 
         btnAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -252,28 +273,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnLoadArduino)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbPort, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(btnOpen, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(btnLoadArduino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbPort))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -294,7 +321,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         StringReader cad= new StringReader(jtxtCode.getText());
         Reader red= new BufferedReader(cad);
@@ -320,10 +347,261 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             
             switch(token){
+                case valMineral:
+                    bandera=5;
+                    cad1+=token+" ";
+                    break;
+                case humAmb:
+                    bandera=1;
+                    cad1+=token+" ";
+                    break;
+                case valPh:
+                    bandera=3;
+                    cad1+=token+" ";
+                    break;
+                case valElect:
+                    bandera=4;
+                    cad1+=token+" ";
+                    break;
+                case valIlum:
+                    bandera=2;
+                    cad1+=token+" ";
+                    break;
+                case A0:
+                    switch(bandera){
+                        case 1:
+                            hum="A0";
+                            break;
+                        case 2:
+                            luz="A0";
+                            break;
+                        case 3:
+                            ph="A0";
+                            break;
+                        case 4:
+                            agua="A0";
+                            break;
+                        case 5:
+                            sustrato="A0";
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case A1:
+                    switch(bandera){
+                        case 1:
+                            hum="A1";
+                            break;
+                        case 2:
+                            luz="A1";
+                            break;
+                        case 3:
+                            ph="A1";
+                            break;
+                        case 4:
+                            agua="A1";
+                            break;
+                        case 5:
+                            sustrato="A1";
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case A2:
+                    switch(bandera){
+                        case 1:
+                            hum="A2";
+                            break;
+                        case 2:
+                            luz="A2";
+                            break;
+                        case 3:
+                            ph="A2";
+                            break;
+                        case 4:
+                            agua="A2";
+                            break;
+                        case 5:
+                            sustrato="A2";
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case A3:
+                    switch(bandera){
+                        case 1:
+                            hum="A3";
+                            break;
+                        case 2:
+                            luz="A3";
+                            break;
+                        case 3:
+                            ph="A3";
+                            break;
+                        case 4:
+                            agua="A3";
+                            break;
+                        case 5:
+                            sustrato="A3";
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case A4:
+                    switch(bandera){
+                        case 1:
+                            hum="A4";
+                            break;
+                        case 2:
+                            luz="A4";
+                            break;
+                        case 3:
+                            ph="A4";
+                            break;
+                        case 4:
+                            agua="A4";
+                            break;
+                        case 5:
+                            sustrato="A4";
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case entero:
+                    switch(bandera){
+                        case 1:
+                            min_hum=Float.parseFloat(lex.lexeme);
+                            bandera=0;
+                            break;
+                        case 2:
+                            min_luz=Float.parseFloat(lex.lexeme);
+                            bandera=0;
+                            break;
+                        case 3:
+                            min_ph=Float.parseFloat(lex.lexeme);
+                            bandera=0;
+                            break;
+                        case 4:
+                            min_agua=Float.parseFloat(lex.lexeme);
+                            bandera=0;
+                            break;
+                        case 5:
+                            min_sust=Float.parseFloat(lex.lexeme);
+                            bandera=0;
+                            break;
+                    }
+                    switch(bandera1){
+                        case 1:
+                            out_agua=Integer.parseInt(lex.lexeme);
+                            bandera1=0;
+                            break;
+                        case 2:
+                            out_ph=Integer.parseInt(lex.lexeme);
+                            bandera1=0;
+                            break;
+                        case 3:
+                            out_hum=Integer.parseInt(lex.lexeme);
+                            bandera1=0;
+                            break;
+                        case 4:
+                            out_luz=Integer.parseInt(lex.lexeme);
+                            bandera1=0;
+                            break;
+                        case 5:
+                            out_sust=Integer.parseInt(lex.lexeme);
+                            bandera1=0;
+                            break;
+                    }
+                    cad1+=token+" ";
+                    break;
+                case bombAgua:
+                    bandera1=1;
+                    cad1+=token+" ";
+                    break;
+                case bombPh:
+                    bandera1=2;
+                    cad1+=token+" ";
+                    break;
+                case onVent:
+                    bandera1=3;
+                    cad1+=token+" ";
+                    break;
+                case onLuz:
+                    bandera1=4;
+                    cad1+=token+" ";
+                    break;
+                case bombaMin:
+                    bandera1=5;
+                    cad1+=token+" ";
+                    break;
                 case ENDLN:
                     //jtxtTokens.setText(jtxtTokens.getText()+"TOKEN: "+token+" "+lex.lexeme+"\n");
-                    System.out.println(cad1);
+                    //System.out.println(cad1);
+                    if(cad1.equals("temIdeal PARAB A0 COMA flotante PARCI ")){
+                        
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A1 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                        System.out.print(hum);
+                    }
+                    if(cad1.equals("temIdeal PARAB A2 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A3 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A4 COMA flotante PARCI ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de tipos."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal PARAB A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Falta operador \")\"."
+                                + " '('\n");
+                    }
+                    //SIN PARENTESIS
+                    if(cad1.equals("temIdeal A3 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal A2 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal A1 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal A4 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
+                    if(cad1.equals("temIdeal A0 COMA flotante ")){
+                        jtxtError.setText(jtxtError.getText()+"Error en la línea "+(lex.linea+1)+". Error de Sintaxis."
+                                + " '('\n");
+                    }
                     
+                    //GRAMATICAS ANTERIORES
                     if(cad1.equals("ID MUL ID ")){
                         jtxtProd.setText(jtxtProd.getText()+"E -> T\n"
                                 + "T -> T * F\n"
@@ -838,6 +1116,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jtxtCodeKeyTyped
+    private void btnLoadArduinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadArduinoActionPerformed
+        
+        Archivo arch= new Archivo(min_hum,min_luz,min_ph,min_agua,min_sust,hum,luz
+                ,ph,agua,sustrato,out_hum,out_luz,out_ph,out_agua,out_sust);
+        System.out.println(arch.getCode());
+        try {
+            arch.crearArchivo("C:\\Users\\Bryan\\","arduino", codigo);
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Arduino arduino = new Arduino();
+        try {
+            arduino.compilar();
+            arduino.cargar(cmbPort.getSelectedItem().toString());
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLoadArduinoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -884,8 +1180,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAbrir;
     private javax.swing.JMenuItem btnGuardar;
+    private javax.swing.JButton btnLoadArduino;
     private javax.swing.JMenuItem btnNuevo;
     private javax.swing.JButton btnOpen;
+    private javax.swing.JComboBox<String> cmbPort;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -909,9 +1207,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void eval(String cad) {
-        switch(cad){
-            case "":
         
-        }
     }
 }
