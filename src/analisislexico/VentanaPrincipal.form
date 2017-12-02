@@ -48,6 +48,21 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Compilar"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAutomatas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Automatas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAutomatasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ayuda"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -273,7 +288,6 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Gramatica de expresiones&#xa;E -&gt; T + E&#xa;E -&gt; T - E&#xa;E -&gt; T&#xa;T -&gt; T / F&#xa;T -&gt; T * F&#xa;T -&gt; F&#xa;F -&gt; NUM&#xa;F -&gt; ID&#xa;F -&gt; (E)"/>
           </Properties>
         </Component>
       </SubComponents>

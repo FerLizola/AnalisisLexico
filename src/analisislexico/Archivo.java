@@ -130,6 +130,9 @@ public class Archivo {
     
     public static void main(String[] args) throws IOException{
         Archivo file = new Archivo();
-        file.crearArchivo("C:\\Users\\Bryan\\","arduino", codigo);
+        file.crearArchivo("C:\\Users\\Bryan\\","ejemplo", "void setup(){\n}\nvoid loop(){\n}");
+        Arduino a = new Arduino();
+        a.compilar();
+        a.cargar("COM3");
     }
 }

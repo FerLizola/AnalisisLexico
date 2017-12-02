@@ -128,6 +128,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnNuevo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        menuAutomatas = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -198,7 +200,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Gramatica de expresiones\nE -> T + E\nE -> T - E\nE -> T\nT -> T / F\nT -> T * F\nT -> F\nF -> NUM\nF -> ID\nF -> (E)");
         jScrollPane1.setViewportView(jTextArea1);
 
         jtxtProd.setColumns(20);
@@ -246,6 +247,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Compilar");
+
+        menuAutomatas.setText("Automatas");
+        menuAutomatas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAutomatasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuAutomatas);
+
+        jMenuItem2.setText("Ayuda");
+        jMenu3.add(jMenuItem2);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -1505,9 +1518,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         Archivo arch= new Archivo(min_hum,min_luz,min_ph,min_agua,min_sust,hum,luz
                 ,ph,agua,sustrato,out_hum,out_luz,out_ph,out_agua,out_sust);
+        jTextArea1.setText("Codigo intermedio: \n"+arch.getCode());
         System.out.println(arch.getCode());
         try {
-            arch.crearArchivo("C:\\Users\\Bryan\\","arduino", codigo);
+            arch.crearArchivo("C:\\Users\\Bryan\\","ejemplo", codigo);
         } catch (IOException ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1519,6 +1533,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLoadArduinoActionPerformed
+
+    private void menuAutomatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAutomatasActionPerformed
+        // TODO add your handling code here:
+        Automatas a = new Automatas();
+        a.setVisible(true);
+    }//GEN-LAST:event_menuAutomatasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1557,7 +1577,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     public static void generarLexer() throws IOException, Exception{
         File file= new File("src/analisislexico/lexer.flex");
-        jflex.Main.generate(file);
+        //jflex.Main.generate(file);
         //ajava_cup.Main.main(new String[]{"C:/Proyectos/AnalisisLexico/src/sintactico.cup"});
        
     }
@@ -1581,6 +1601,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1588,6 +1609,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jtxtCode;
     private javax.swing.JTextArea jtxtError;
     private javax.swing.JTextArea jtxtProd;
+    private javax.swing.JMenuItem menuAutomatas;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 

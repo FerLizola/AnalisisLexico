@@ -2,7 +2,7 @@
 
 package analisislexico;
 import static analisislexico.Token.*;
-import java_cup.runtime.Symbol;
+//import java_cup.runtime.Symbol;
 import java.io.Reader;
 
 /**
