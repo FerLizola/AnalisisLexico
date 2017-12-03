@@ -272,26 +272,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhumAmbActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnvalMineral">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnvalMineralActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="valPh">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valPhActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnvalIlum">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnvalIlumActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnonLuz">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnonLuzActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnbombDes">
       <Properties>
@@ -305,16 +320,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbombPhActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnonVent">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnonVentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnbombAgua">
       <Properties>
         <Property name="text" type="java.lang.String" value="ver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbombAguaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -5,9 +5,16 @@
  */
 package analisislexico;
 
-import static analisislexico.Token.valElect;
+import analisislexico.automatas.bombAgua;
 import analisislexico.automatas.bombDes;
+import analisislexico.automatas.bombPh;
+import analisislexico.automatas.humAmb;
+import analisislexico.automatas.onLuz;
+import analisislexico.automatas.onVent;
 import analisislexico.automatas.valElect;
+import analisislexico.automatas.valIlum;
+import analisislexico.automatas.valMineral;
+import analisislexico.automatas.valPh;
 
 /**
  *
@@ -117,14 +124,39 @@ public class Automatas extends javax.swing.JFrame {
         });
 
         btnhumAmb.setText("ver");
+        btnhumAmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhumAmbActionPerformed(evt);
+            }
+        });
 
         btnvalMineral.setText("ver");
+        btnvalMineral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvalMineralActionPerformed(evt);
+            }
+        });
 
         valPh.setText("ver");
+        valPh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valPhActionPerformed(evt);
+            }
+        });
 
         btnvalIlum.setText("ver");
+        btnvalIlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvalIlumActionPerformed(evt);
+            }
+        });
 
         btnonLuz.setText("ver");
+        btnonLuz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnonLuzActionPerformed(evt);
+            }
+        });
 
         btnbombDes.setText("ver");
         btnbombDes.addActionListener(new java.awt.event.ActionListener() {
@@ -134,10 +166,25 @@ public class Automatas extends javax.swing.JFrame {
         });
 
         btnbombPh.setText("ver");
+        btnbombPh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbombPhActionPerformed(evt);
+            }
+        });
 
         btnonVent.setText("ver");
+        btnonVent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnonVentActionPerformed(evt);
+            }
+        });
 
         btnbombAgua.setText("ver");
+        btnbombAgua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbombAguaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,6 +293,54 @@ public class Automatas extends javax.swing.JFrame {
         analisislexico.automatas.bombDes b = new bombDes();
         b.setVisible(true);
     }//GEN-LAST:event_btnbombDesActionPerformed
+
+    private void btnhumAmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhumAmbActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.humAmb h = new humAmb();
+        h.setVisible(true);
+    }//GEN-LAST:event_btnhumAmbActionPerformed
+
+    private void btnvalMineralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvalMineralActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.valMineral v = new valMineral();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnvalMineralActionPerformed
+
+    private void valPhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valPhActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.valPh v = new valPh();
+        v.setVisible(true);
+    }//GEN-LAST:event_valPhActionPerformed
+
+    private void btnvalIlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvalIlumActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.valIlum v = new valIlum();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnvalIlumActionPerformed
+
+    private void btnbombPhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbombPhActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.bombPh b = new bombPh();
+        b.setVisible(true);
+    }//GEN-LAST:event_btnbombPhActionPerformed
+
+    private void btnbombAguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbombAguaActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.bombAgua b = new bombAgua();
+        b.setVisible(true);
+    }//GEN-LAST:event_btnbombAguaActionPerformed
+
+    private void btnonVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnonVentActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.onVent o = new onVent();
+        o.setVisible(true);
+    }//GEN-LAST:event_btnonVentActionPerformed
+
+    private void btnonLuzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnonLuzActionPerformed
+        // TODO add your handling code here:
+        analisislexico.automatas.onLuz o = new onLuz();
+        o.setVisible(true);
+    }//GEN-LAST:event_btnonLuzActionPerformed
 
     /**
      * @param args the command line arguments
