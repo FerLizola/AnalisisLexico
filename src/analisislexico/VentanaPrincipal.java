@@ -7,6 +7,7 @@ package analisislexico;
 
 import static analisislexico.Archivo.codigo;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Event;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -129,7 +130,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         menuAutomatas = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mit_ayuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -256,8 +257,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(menuAutomatas);
 
-        jMenuItem2.setText("Ayuda");
-        jMenu3.add(jMenuItem2);
+        mit_ayuda.setText("Ayuda");
+        mit_ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mit_ayudaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mit_ayuda);
 
         jMenuBar1.add(jMenu3);
 
@@ -1540,6 +1546,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_menuAutomatasActionPerformed
 
+    private void mit_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mit_ayudaActionPerformed
+       abrirManualUsuario();
+    }//GEN-LAST:event_mit_ayudaActionPerformed
+
+    private void abrirManualUsuario() {
+        try {
+
+           File path = new File ("src/manuales/Manual-usuario.pdf");
+            Desktop.getDesktop().open(path);
+
+     }catch (IOException ex) {
+
+            System.out.println(ex);
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -1601,7 +1622,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1610,6 +1630,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jtxtError;
     private javax.swing.JTextArea jtxtProd;
     private javax.swing.JMenuItem menuAutomatas;
+    private javax.swing.JMenuItem mit_ayuda;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 
